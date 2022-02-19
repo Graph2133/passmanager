@@ -16,7 +16,7 @@ A console app to manage your passwords. App is written using [DPAPI](https://doc
     - u-secret <Query>    Updates custom password secret
     - stats               Prints some stats about passwords
 
-## More in depth docs: 
+## More in details about app console commands: 
 
 - ### init | Initializes application secure storage, index file
 

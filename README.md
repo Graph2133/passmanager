@@ -1,9 +1,12 @@
 # Passmanager
 A console app to manage your passwords. App is written using [DPAPI](https://docs.microsoft.com/en-us/dotnet/standard/security/how-to-use-data-protection) and [Spectre.Console](https://spectreconsole.net). This application parses provided commands (args) and allows you to manage your passwords. All passowrds are encrypted using DPAPI and stored in user-scoped [Isolated storage](https://docs.microsoft.com/en-us/dotnet/standard/io/isolated-storage).
 
+## Is this app secure ?
+This app is as secure as DPAPI and user scoped Isolated storage are, so if you consider them safe try this app. If you need additional level of security you can apply custom secret to each of the passwords separately. Provided secret value will be used as DPAPI entropy.
+
 ## Commands
 
-### Short summary:
+### Short commands summary:
 
     - init                Initializes application secure storage, index file
     - purge               Deletes all passwords
@@ -16,7 +19,7 @@ A console app to manage your passwords. App is written using [DPAPI](https://doc
     - u-secret <Query>    Updates custom password secret
     - stats               Prints some stats about passwords
 
-## More in details about app console commands: 
+## More in details about console commands: 
 
 - ### init | Initializes application secure storage, index file
 

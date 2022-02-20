@@ -4,6 +4,17 @@ A console app to manage your passwords. App is written using [DPAPI](https://doc
 ## Is this app secure ?
 This app is as secure as DPAPI and user scoped Isolated storage are, so if you consider them safe try this app. If you need additional level of security you can apply custom secret to each of the passwords separately. Provided secret value will be used as DPAPI entropy.
 
+## How to start ?
+
+- Download and build project in debug/release mode
+- Run **./PassManager.Console --help** command to explore app documentation
+- Go to the output directory and run from console **./PassManager.Console init** command
+- Add new password entries using **./PassManager.Console add** command
+- Explore all commands listed below
+
+
+In order to access app globally you might use system environment variables or pack your build as [global .NET tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools-how-to-create).
+
 ## Commands
 
 ### Short commands summary:

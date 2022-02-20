@@ -11,6 +11,7 @@ namespace PassManager.Infrastructure.Serialization
             using var ms = new MemoryStream();
             using var dataWriter = new BsonDataWriter(ms);
             var serializer = new JsonSerializer();
+
             serializer.Serialize(dataWriter, value);
 
             return ms.ToArray();
@@ -20,7 +21,7 @@ namespace PassManager.Infrastructure.Serialization
         {
             using MemoryStream ms = new MemoryStream(data);
             using BsonDataReader reader = new BsonDataReader(ms);
-            JsonSerializer serializer = new JsonSerializer();
+            var serializer = new JsonSerializer();
 
             return serializer.Deserialize<T>(reader);
         }

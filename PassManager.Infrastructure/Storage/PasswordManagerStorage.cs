@@ -9,14 +9,14 @@ namespace PassManager.Infrastructure.Storage
     {
         public void InitializeStorage()
         {
-            using IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+            using var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             isoStore.CreateDirectory(Configuration.AppName);
         }
 
         public async Task WriteBytesAsync(string fileName, byte[] bytes)
         {
-            using IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
-            string relativePath = $"{Configuration.AppName}/{fileName}";
+            var relativePath = $"{Configuration.AppName}/{fileName}";
+            using var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             using var file = isoStore.OpenFile(relativePath, FileMode.OpenOrCreate);
 
             await file.WriteAsync(bytes);
@@ -24,7 +24,7 @@ namespace PassManager.Infrastructure.Storage
 
         public async Task<byte[]> ReadBytesAsync(string fileName)
         {
-            using IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+            using var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             using var fileStream = isoStore.OpenFile($"{Configuration.AppName}/{fileName}", FileMode.Open);
             using var memoryStream = new MemoryStream();
 
@@ -35,13 +35,13 @@ namespace PassManager.Infrastructure.Storage
 
         public void DeleteFileAsync(string fileName)
         {
-            using IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+            using var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             isoStore.DeleteFile($"{Configuration.AppName}/{fileName}");
         }
 
         public void PurgeStorage()
         {
-            using IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication();
+            using var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             isoStore.Remove();
         }
     }

@@ -20,7 +20,7 @@ namespace PassManager.Console
                     .AddInitializeCommand()
                     .AddPurgeCommand();
 
-                // pass commands
+                // password commands
                 config
                     .AddAddPasswordCommand()
                     .AddDeletePasswordCommand()
